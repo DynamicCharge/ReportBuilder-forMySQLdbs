@@ -1,3 +1,6 @@
+h1, h2, h3, h4 {
+    margin: 0;
+}
 
 .wrapper {
     display: flex;
@@ -17,9 +20,14 @@
     transition: all 0.3s;
 }
 
+#header {
+    margin-bottom: 65px;
+    text-align: center;
+}
+
 #content {
     width: calc(100% - 135px);
-    padding: 20px;
+    padding: 10px 20px;
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;

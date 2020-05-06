@@ -69,12 +69,14 @@ AppAsset::register($this);
         </div>
     </nav>
 
+
     <div id="content">
 
         <button type="button" id="sidebarExpand" class="expand" style="display: none">
             <img src="/img/top-menu-icon.png" alt="">
         </button>
 
+        <h3 id="header">ReportBuilder-forMySQLdbs</h3>
         <div class="container-fluid">
 
             <?= $content ?>
