@@ -20,9 +20,20 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+//        'css/site.css',
+        'css/main-layout.css',
     ];
     public $js = [
+//        jQuery CDN - Slim version (=without AJAX)
+        "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+//        Popper.JS
+        "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js",
+//        Bootstrap JS
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js",
+//        jQuery Custom Scroller CDN
+        "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js",
+//        custom script
+        '/web/scripts/sidebar-functionality.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

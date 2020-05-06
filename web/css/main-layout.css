@@ -1,0 +1,147 @@
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    /*align-items: stretch;*/
+}
+
+#sidebar {
+    width: 135px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: #333333;
+    color: #9d9d9d;
+    transition: all 0.3s;
+}
+
+#content {
+    width: calc(100% - 135px);
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#sidebar.active {
+    margin-left: -135px;
+}
+
+#content.active {
+    width: 100%;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -135px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+body {
+    font-family: 'Tahoma', sans-serif;
+    background: #1a1a1a;
+}
+
+
+#sidebar .sidebar-header {
+    padding: 10px 30px;
+}
+
+#sidebar .sidebar-header #top-sidebar-button{
+    border: none;
+    background: none;
+    width: 100%;
+    height: 50px;
+}
+
+.flex {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.components {
+    width: 100%;
+}
+
+#sidebar ul li a {
+    color: #ffffff;
+    padding: 22px 0;
+    font-size: 1.1em;
+    display: block;
+    text-align: center;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+#top-sidebar-button {
+    position: relative;
+}
+
+#sidebar div:not(:nth-child(1)) .icon-switcher {
+    position:relative;
+    height: 100px;
+}
+
+.icon-switcher img {
+    position:absolute;
+    margin:auto;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+.icon-switcher img.second-image {
+    opacity:0;
+    filter:alpha(opacity=0);
+}
+
+a:hover img.second-image, .icon-switcher:hover img.second-image {
+    opacity:1;
+    transition: 0.3s;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a:hover {
+    color: #ff2f2f;
+    background: #484848;
+}
+
+#sidebarExpand {
+    position: fixed;
+    z-index: 999;
+    border: 1px solid #1a1a1a;
+    background: #333333;
+    margin-top: 10px;
+    transition: 0.3s;
+    width: 103px;
+    height: 50px;
+}
