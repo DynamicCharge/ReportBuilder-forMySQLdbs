@@ -14,7 +14,6 @@ $(document).ready(function () {
         // in our CSS
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         if ($('#sidebarExpand').is(':visible')) {
-            // $('#sidebarExpand').style.display = 'none';
             document.getElementById("sidebarExpand").style.display = "none";
         } else {
             $('#sidebarExpand').show()

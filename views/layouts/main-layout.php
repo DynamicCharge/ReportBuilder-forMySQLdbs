@@ -58,7 +58,7 @@ AppAsset::register($this);
                     </a>
                 </li>
                 <li>
-                    <a href="http://reportbuilder-formysqldbs/web/index.php?r=site/about">
+                    <a href="http://reportbuilder-formysqldbs/web/index.php?r=site/info">
                         <div class="icon-switcher">
                             <img src="/img/ticon.png" alt="" class="first-image">
                             <img src="/img/ticon_choosen.png" alt="" class="second-image">
