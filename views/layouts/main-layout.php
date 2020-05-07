@@ -50,7 +50,7 @@ AppAsset::register($this);
                     </a>
                 </li>
                 <li>
-                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/contact\">
+                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/settings\">
                         <div class=\"icon-switcher\">
                             <img src=\"/img/sicon.png\" alt=\"\" class=\"first-image\">
                             <img src=\"/img/sicon_choosen.png\" alt=\"\" class=\"second-image\">

@@ -219,3 +219,87 @@ a, a:hover, a:focus {
     font-size: 22px;
 }
 /**/
+
+/*view - settings*/
+.option-field {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    color: #d0cfcf;
+    margin-top: 10px;
+}
+
+.option-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 450px;
+    background: #333333;
+}
+.option-title h3 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.option-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+    height: 80px;
+    background: #333333;
+    margin-left: 10px;
+}
+.option-body input {
+    width: 550px;
+    margin-left: 30px;
+    height: 45px;
+    background: #c2c2c2;
+    border: none;
+    color: black;
+    padding: 0 10px;
+}
+
+.icons_container{
+    width: 197px;
+}
+
+#check_connection_button {
+    position: relative;
+    height: 40px;
+    width: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background: #333333;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+#check_connection_button:hover {
+    background: #484848;
+}
+#check_connection_button img{
+    height: 80%;
+}
+
+#save_settings_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 35px auto;
+    background: #333333;
+    color: #fff;
+    border: none;
+    width: 150px;
+    height: 60px;
+    transition: 0.3s;
+}
+#save_settings_button:hover {
+    background: #484848;
+}
+#save_settings_button h4 {
+    margin-left: 9px;
+}
+/**/
