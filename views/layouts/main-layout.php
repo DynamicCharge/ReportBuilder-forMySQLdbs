@@ -25,43 +25,43 @@ AppAsset::register($this);
 <?php $this->head() ?>
 </head>
 <body>
-<?php $this->beginBody() ?>
+<?php $this->beginBody();
 
-<?
- $start_url = Url::to('site/index');
-?>
+ $index_url = Url::to('site/index');
+ $settings_url = Url::to('site/settings');
+ $info_url = Url::to('site/info');
 
-<div class="wrapper">
-   <nav id="sidebar">
-        <div class="sidebar-header">
-            <button id="top-sidebar-button" class="icon-switcher expand">
-                <img src="/img/top-menu-icon.png" alt="" class="first-image">
-                <img src="/img/top-menu-icon_choosen.png" alt="" class="second-image">
+ echo "<div class=\"wrapper\">
+   <nav id=\"sidebar\">
+        <div class=\"sidebar-header\">
+            <button id=\"top-sidebar-button\" class=\"icon-switcher expand\">
+                <img src=\"/img/top-menu-icon.png\" alt=\"\" class=\"first-image\">
+                <img src=\"/img/top-menu-icon_choosen.png\" alt=\"\" class=\"second-image\">
             </button>
         </div>
-        <div class="flex">
-            <ul class="list-unstyled components">
+        <div class=\"flex\">
+            <ul class=\"list-unstyled components\">
                 <li>
-                    <a href= "http://reportbuilder-formysqldbs/web/index.php?r=site/index">
-                        <div class="icon-switcher">
-                            <img src="/img/ficon.png" alt="" class="first-image">
-                            <img src="/img/ficon_choosen.png" alt="" class="second-image">
+                    <a href= \"http://reportbuilder-formysqldbs/web/index.php?r=site/index\">
+                        <div class=\"icon-switcher\">
+                            <img src=\"/img/ficon.png\" alt=\"\" class=\"first-image\">
+                            <img src=\"/img/ficon_choosen.png\" alt=\"\" class=\"second-image\">
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="http://reportbuilder-formysqldbs/web/index.php?r=site/contact">
-                        <div class="icon-switcher">
-                            <img src="/img/sicon.png" alt="" class="first-image">
-                            <img src="/img/sicon_choosen.png" alt="" class="second-image">
+                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/contact\">
+                        <div class=\"icon-switcher\">
+                            <img src=\"/img/sicon.png\" alt=\"\" class=\"first-image\">
+                            <img src=\"/img/sicon_choosen.png\" alt=\"\" class=\"second-image\">
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a href="http://reportbuilder-formysqldbs/web/index.php?r=site/info">
-                        <div class="icon-switcher">
-                            <img src="/img/ticon.png" alt="" class="first-image">
-                            <img src="/img/ticon_choosen.png" alt="" class="second-image">
+                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/info\">
+                        <div class=\"icon-switcher\">
+                            <img src=\"/img/ticon.png\" alt=\"\" class=\"first-image\">
+                            <img src=\"/img/ticon_choosen.png\" alt=\"\" class=\"second-image\">
                         </div>
                     </a>
                 </li>
@@ -70,22 +70,22 @@ AppAsset::register($this);
     </nav>
 
 
-    <div id="content">
+    <div id=\"content\">
 
-        <button type="button" id="sidebarExpand" class="expand" style="display: none">
-            <img src="/img/top-menu-icon.png" alt="">
+        <button type=\"button\" id=\"sidebarExpand\" class=\"expand\" style=\"display: none\">
+            <img src=\"/img/top-menu-icon.png\" alt=\"\">
         </button>
 
-        <h3 id="header">ReportBuilder-forMySQLdbs</h3>
-        <div class="container-fluid">
+        <h3 id=\"header\">ReportBuilder-forMySQLdbs</h3>
+        <div class=\"container-fluid\">
 
-            <?= $content ?>
+            $content
 
         </div>
     </div>
-</div>
+</div>";
 
-<?php $this->endBody() ?>
+ $this->endBody(); ?>
 </body>
 </html>
 <?php $this->endPage() ?>
