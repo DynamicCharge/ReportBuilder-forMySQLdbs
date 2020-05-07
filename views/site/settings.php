@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Справка';
+$this->title = 'Настройки';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

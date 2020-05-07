@@ -76,7 +76,7 @@ AppAsset::register($this);
             <img src=\"/img/top-menu-icon.png\" alt=\"\">
         </button>
 
-        <h3 id=\"header\">ReportBuilder-forMySQLdbs</h3>
+        <h3 id=\"main_header\">ReportBuilder-forMySQLdbs</h3>
         <div class=\"container-fluid\">
 
             $content
