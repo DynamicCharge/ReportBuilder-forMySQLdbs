@@ -193,6 +193,13 @@ a, a:hover, a:focus {
 /**/
 
 /*view - settings*/
+.main-settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
 .option-field {
     display: flex;
     justify-content: center;
@@ -202,40 +209,43 @@ a, a:hover, a:focus {
     margin-top: 10px;
 }
 
+.dot {
+    width: 50px;
+    height: 50px;
+    background: #333333;
+    margin-right: 10px;
+}
+
 .option-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
-    width: 450px;
+    height: 50px;
+    width: 405px;
     background: #333333;
 }
 .option-title h3 {
-    text-align: center;
+    width: 100%;
+    text-align: left;
     font-size: 25px;
+    padding-left: 35px;
 }
 
-.option-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 850px;
-    height: 80px;
-    background: #333333;
-    margin-left: 10px;
-}
-.option-body input {
-    width: 550px;
+.option-field input {
+    width: 405px;
     margin-left: 30px;
-    height: 45px;
+    height: 50px;
     background: #c2c2c2;
     border: none;
     color: black;
-    padding: 0 10px;
+    padding-left: 30px;
+    font-size: 20px;
 }
 
 .icons_container{
     width: 197px;
+    margin: 10px auto;
+    transition: 0.5s;
 }
 
 #check_connection_button {
