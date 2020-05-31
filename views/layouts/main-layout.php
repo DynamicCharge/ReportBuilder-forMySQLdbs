@@ -42,7 +42,7 @@ AppAsset::register($this);
         <div class=\"flex\">
             <ul class=\"list-unstyled components\">
                 <li>
-                    <a href= \"http://reportbuilder-formysqldbs/web/index.php?r=site/index\">
+                    <a href= \"http://reportbuilder-formysqldbs/web/index.php?r=site/index\" class='item'>
                         <div class=\"icon-switcher\">
                             <img src=\"/img/ficon.png\" alt=\"\" class=\"first-image\">
                             <img src=\"/img/ficon_choosen.png\" alt=\"\" class=\"second-image\">
@@ -50,7 +50,7 @@ AppAsset::register($this);
                     </a>
                 </li>
                 <li>
-                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/settings\">
+                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/settings\" class='item'>
                         <div class=\"icon-switcher\">
                             <img src=\"/img/sicon.png\" alt=\"\" class=\"first-image\">
                             <img src=\"/img/sicon_choosen.png\" alt=\"\" class=\"second-image\">
@@ -58,7 +58,7 @@ AppAsset::register($this);
                     </a>
                 </li>
                 <li>
-                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/info\">
+                    <a href=\"http://reportbuilder-formysqldbs/web/index.php?r=site/info\" class='item'>
                         <div class=\"icon-switcher\">
                             <img src=\"/img/ticon.png\" alt=\"\" class=\"first-image\">
                             <img src=\"/img/ticon_choosen.png\" alt=\"\" class=\"second-image\">

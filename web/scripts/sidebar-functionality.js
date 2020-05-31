@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('a[href="' + window.location.href + '"]').parent().addClass('chosen');
 
     $("#sidebar").mCustomScrollbar({
         theme: "minimal"
@@ -19,5 +20,4 @@ $(document).ready(function () {
             $('#sidebarExpand').show()
         }
     });
-
 });

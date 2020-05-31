@@ -171,6 +171,16 @@ a, a:hover, a:focus {
     width: 30%;
 }
 
+.chosen {
+    background: #484848;
+}
+.chosen img.second-image {
+    opacity: 1;
+}
+.chosen img.first-image {
+    opacity: 0;
+}
+
 /*view - index*/
 .main_header {
 
