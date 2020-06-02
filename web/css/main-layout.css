@@ -190,15 +190,68 @@ a, a:hover, a:focus {
     font-size: 50px;
 }
 
-.temp {
+.radial_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     height: 65vh;
+    /*border: 1px solid red;*/
+}
+.radial_container div {
+
+}
+
+#left_radial h3 {
+    font-size: 18px;
+    color: #6d6d6d;
+    margin-top: 15px;
     text-align: center;
 }
-.temp h1 {
-    font-size: 60px;
+
+#center_radial {
+    margin: 0 130px;
+}
+#center_radial .outer_radius {
+    background: #2b2c2c;
+    border-radius: 300px;
+    box-shadow: black 0 0 30px 5px;
+    padding: 37px;
+}
+#center_radial .inner_outer_radius {
+    background: #ff2424;
+    border-radius: 300px;
+    border: 1px solid black;
+    box-shadow: #8b1515 0 0 25px 2px;
+    padding: 8px;
+}
+#center_radial .inner_radius{
+    background: #131313;
+    border-radius: 300px;
+    padding: 20px;
+}
+#center_radial .inner_radius .main-radial-icon-switcher {
+    border-radius: 1000px;
+    height: 200px;
+    width: 200px;
+    padding-top: 1vh;
+}
+#center_radial img {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+#center_radial:hover .outer_radius{
+    background: url("../../img/mainRadial/chosen-outer-radius.png") no-repeat center;
+    transition: 0.5s;
+    box-shadow: black 0 0 40px 10px;
+}
+
+#right_radial h3 {
+    font-size: 18px;
+    color: #6d6d6d;
+    margin-top: 15px;
+    text-align: center;
 }
 /**/
 

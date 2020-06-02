@@ -11,8 +11,34 @@ $this->title = 'Главная';
     </div>
 
     <div class="main_content">
-        <div class="temp">
-            <h1>Тут должны быть сраные кружки<br>Памагити :(</h1>
+        <div class="radial_container">
+            <div id="left_radial">
+                <div id="radial_icons">
+                    <img src="../../img/left-radial-status-green.png" alt="" style="display:none;">
+                    <img src="../../img/left-radial-status-red.png" alt="" >
+                </div>
+                <h3 id="left_radial_status">База данных не<br>определена</h3>
+            </div>
+            <div id="center_radial">
+                <a href="">
+                    <div class="outer_radius">
+                        <div class="inner_outer_radius">
+                            <div class="inner_radius">
+                                <div class="main-radial-icon-switcher">
+                                    <img src="../../img/mainRadial/icon.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="right_radial">
+                <div id="radial_icons">
+                    <img src="../../img/left-radial-status-green.png" alt="" style="display:none;">
+                    <img src="../../img/left-radial-status-red.png" alt="" >
+                </div>
+                <h3 id="left_radial_status">Идея не<br>определена</h3>
+            </div>
         </div>
     </div>
 </div>
