@@ -35,13 +35,13 @@ AppAsset::register($this);
         <div class=\"main-flex\">
             <ul class=\"list-unstyled components\">
                 <li>
-                    <a href= \"http://reportbuilder-formysqldbs/web/index.php?r=site/index\" class='item'>Отчет по статусам заявок</a>
+                    <a href= \"#\" class='item'>Отчет по статусам заявок</a>
                 </li>
                 <li>
-                    <a href= \"http://reportbuilder-formysqldbs/web/index.php?r=site/index\" class='item'>Отчет по должникам</a>
+                    <a href= \"#\" class='item'>Отчет по должникам</a>
                 </li>
                 <li>
-                    <a href= \"http://reportbuilder-formysqldbs/web/index.php?r=site/index\" class='item'>Отчет по пролонгациям</a>
+                    <a href= \"#\" class='item'>Отчет по пролонгациям</a>
                 </li>
             </ul>
         </div>

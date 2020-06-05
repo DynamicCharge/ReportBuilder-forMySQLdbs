@@ -20,7 +20,7 @@ $this->title = 'Главная';
                 <h3 id="left_radial_status">База данных не<br>определена</h3>
             </div>
             <div id="center_radial">
-                <a href="http://reportbuilder-formysqldbs/web/index.php?r=main/main">
+                <a href="http://reportbuilder-formysqldbs/web/index.php?r=main/create-report">
                     <div class="outer_radius">
                         <div class="inner_outer_radius">
                             <div class="inner_radius">

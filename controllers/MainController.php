@@ -15,8 +15,8 @@ class MainController extends Controller
 {
     public $layout = 'second-layout';
 
-    public function actionMain(){
-        return $this->render('main');
+    public function actionCreateReport(){
+        return $this->render('create-report');
     }
 
 }
