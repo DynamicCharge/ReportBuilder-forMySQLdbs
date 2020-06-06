@@ -286,3 +286,15 @@ a:hover img.first-image, .exiticon-switcher:hover img.first-image {
 #save_new_report h4 {
     margin-left: 9px;
 }
+
+.nothing-show {
+    text-align: center;
+    font-size: 2em;
+    border-top: 2px solid #1a1a1a;
+    padding: 10px 0;
+}
+
+.chosen {
+    background: #484848;
+    color: #ff2f2f;
+}

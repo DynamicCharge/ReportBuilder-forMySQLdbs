@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('a[href="' + window.location.href + '"]').parent().addClass('chosen');
 
     $('.main-expand').on('click', function () {
         // open or close navbar

@@ -36,6 +36,7 @@ class AppAsset extends AssetBundle
         '/web/scripts/sidebar-functionality.js',
         '/web/scripts/main-sidebar-functionality.js',
         '/web/scripts/flexible-table-functionality.js',
+        '/web/scripts/main-button-processor.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

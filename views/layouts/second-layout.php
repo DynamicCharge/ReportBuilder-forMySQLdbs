@@ -10,9 +10,15 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
+use app\models\Reports;
 
 AppAsset::register($this);
 ?>
+
+<?php
+$reportList = Reports::find()->asArray()->all();
+?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -27,50 +33,50 @@ AppAsset::register($this);
 <body>
     <?php $this->beginBody();
 
-    echo "<div class=\"wrapper\">
-   <nav id=\"main-sidebar\">
-        <div class=\"main-sidebar-header\">
-            <a id=\"top-main-sidebar-button\">Создать отчет +</a>
-        </div>
-        <div class=\"main-flex\">
-            <ul class=\"list-unstyled components\">
-                <li>
-                    <a href= \"#\" class='item'>Отчет по статусам заявок</a>
-                </li>
-                <li>
-                    <a href= \"#\" class='item'>Отчет по должникам</a>
-                </li>
-                <li>
-                    <a href= \"#\" class='item'>Отчет по пролонгациям</a>
-                </li>
-            </ul>
-        </div>
-        <div class=\"main-sidebar-footer\">
-            <a id=\"bott-main-sidebar-button\" href='http://reportbuilder-formysqldbs/web/index.php?r=site/index'>
-                <div class=\"exit-icon-switcher\">
-                            <img src=\"/img/exit.png\" alt=\"\" class=\"first-image\">
-                            <img src=\"/img/choosen_exit.ong.png\" alt=\"\" class=\"second-image\">
-                </div>
-                <p>Выход</p>
-            </a>
-        </div>
-    </nav>
+    echo "<div class=\"wrapper\">";
+    echo "<nav id=\"main-sidebar\">";
+        echo "<div class=\"main-sidebar-header\">";
+            echo "<a id=\"top-main-sidebar-button\" href='http://reportbuilder-formysqldbs/web/index.php?r=main/create-report'>Создать отчет +</a>";
+        echo "</div>";
+        echo "<div class=\"main-flex\">";
+            echo "<ul class=\"list-unstyled components\">";
+                if ($reportList){
+                    foreach ($reportList as $item) {
+                        echo  "<li>";
+                        echo "<a href= \"#\" class='item'>".$item['name']."</a>";
+                        echo "</li>";
+                }
+                } else {
+                    echo "<p class='nothing-show'>Не найдено ни одного отчета</p>";
+                }
+            echo "</ul>";
+        echo "</div>";
+        echo "<div class=\"main-sidebar-footer\">";
+           echo  "<a id=\"bott-main-sidebar-button\" href='http://reportbuilder-formysqldbs/web/index.php?r=site/index'>";
+                echo "<div class=\"exit-icon-switcher\">";
+                            echo "<img src=\"/img/exit.png\" alt=\"\" class=\"first-image\">";
+                            echo "<img src=\"/img/choosen_exit.ong.png\" alt=\"\" class=\"second-image\">";
+                echo "</div>";
+                echo "<p>Выход</p>";
+            echo "</a>";
+        echo "</div>";
+    echo "</nav>";
 
 
-    <div id=\"content\">
+    echo "<div id=\"content\">";
 
-        <button type=\"button\" id=\"mainSidebarExpand\" class=\"main-expand\">
-            <img src=\"/img/main-sidebar-expand-icon.png\" alt=\"\" class='to-left' id='expand-arrow-img'>
-        </button>
+        echo "<button type=\"button\" id=\"mainSidebarExpand\" class=\"main-expand\">";
+            echo "<img src=\"/img/main-sidebar-expand-icon.png\" alt=\"\" class='to-left' id='expand-arrow-img'>";
+        echo "</button>";
 
-        <h3 id=\"main_header\">ReportBuilder-forMySQLdbs</h3>
-        <div class=\"container-fluid\">
+        echo "<h3 id=\"main_header\">ReportBuilder-forMySQLdbs</h3>";
+        echo "<div class=\"container-fluid\">";
 
-            $content
+            echo $content;
 
-        </div>
-    </div>
-</div>";
+        echo "</div>";
+    echo "</div>";
+echo "</div>";
 
     $this->endBody(); ?>
 </body>

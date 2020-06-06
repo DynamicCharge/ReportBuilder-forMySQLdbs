@@ -13,14 +13,23 @@ $this->title = 'Главная';
     <div class="main_content">
         <div class="radial_container">
             <div id="left_radial">
-                <div id="radial_icons">
-                    <img src="../../img/left-radial-status-green.png" alt="" style="display:none;">
-                    <img src="../../img/left-radial-status-red.png" alt="" >
-                </div>
-                <h3 id="left_radial_status">База данных не<br>определена</h3>
+                <?php
+                if (Yii::$app->session->hasFlash('connected')) {
+                    echo '<div id="radial_icons">';
+                    echo '<img class="green" src="../../img/left-radial-status-green.png" alt="">';
+                    echo '</div>';
+
+                    echo '<h3 id="left_radial_status">'.$settingsArray['db_name'].'</h3>';
+                } else {
+                    echo '<div id="radial_icons">';
+                    echo '<img src="../../img/left-radial-status-red.png" alt="" >';
+                    echo '</div>';
+                    echo '<h3 id="left_radial_status">База данных не<br>определена</h3>';
+                }
+                ?>
             </div>
             <div id="center_radial">
-                <a href="http://reportbuilder-formysqldbs/web/index.php?r=main/create-report">
+                <a id="main_button">
                     <div class="outer_radius">
                         <div class="inner_outer_radius">
                             <div class="inner_radius">

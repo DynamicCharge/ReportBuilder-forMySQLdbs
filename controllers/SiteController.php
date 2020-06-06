@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Settings;
 use Yii;
+use yii\db\Exception;
+use yii\debug\components\search\matchers\Base;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -61,7 +64,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $settingsArray = Settings::find()->asArray()->one();
+        if ($settingsArray){
+            Yii::$app->session->setFlash('connected', 'База даных подключена!');
+            return $this->render('index', compact('settingsArray'));
+        } else {
+            Yii::$app->session->setFlash('disconnected', 'База даных не подключена!');
+            return $this->render('index');
+        }
     }
 
     /**
@@ -71,7 +81,28 @@ class SiteController extends Controller
      */
     public function actionSettings()
     {
-        return $this->render('settings');
+        $settingsModel = new Settings();
+
+        if (Settings::find()->all()) {
+            $settingsModel = Settings::find()->one();
+        }
+
+        if ($settingsModel->load(Yii::$app->request->post())){
+            if ($settingsModel->validate()) {
+                try {
+                    $dbc = mysqli_connect($settingsModel['host'], $settingsModel['username'], $settingsModel['password'], $settingsModel['db_name']);
+                    if(!$dbc){
+                        throw new Exception('Error!');
+                    }
+                    Yii::$app->session->setFlash('settings-model-success', 'Соединение успешно установлено!');
+                    $settingsModel->save();
+                } catch (\Exception $ex){
+                    Yii::$app->session->setFlash('settings-model-error', 'Соединение не установлено');
+                }
+            }
+        }
+
+        return $this->render('settings', compact('settingsModel'));
     }
 
     /**

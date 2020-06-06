@@ -4,6 +4,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use \yii\widgets\ActiveForm;
 
 $this->title = 'Настройки';
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1>Настройки</h1>
     </div>
 
+    <?php $form =  ActiveForm::begin() ?>
     <div class="main-settings-container">
 
     <div class="settings-content">
@@ -22,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="option-title">
                 <h3>Адрес хоста</h3>
             </div>
-            <input type="text" name="db_host_name" value="" placeholder="localhost">
+            <?= $form->field($settingsModel, 'host', ['inputOptions' => ['id'=> 'host_name_input', 'class'=> 'option_input']])->label(false)->textInput(['placeholder' => 'test_database'])->textInput(['placeholder' => 'localhost'])?>
         </div>
 
         <div class="option-field">
@@ -30,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="option-title">
                 <h3>Имя пользователя</h3>
             </div>
-            <input type="text" name="db_user_name" value="" placeholder="root">
+            <?= $form->field($settingsModel, 'username', ['inputOptions' => ['id'=> 'user_name_input', 'class'=> 'option_input']])->label(false)->textInput(['placeholder' => 'root'])?>
         </div>
 
         <div class="option-field">
@@ -38,7 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="option-title">
                 <h3>Пороль от СУБД</h3>
             </div>
-            <input type="password" name="db_password" value="" placeholder="password">
+            <?= $form->field($settingsModel, 'password', ['inputOptions' => ['id'=> 'db_password_input', 'class'=> 'option_input']])->label(false)->textInput(['placeholder' => 'password'])?>
+
         </div>
 
         <div class="option-field">
@@ -46,7 +49,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="option-title">
                 <h3>Название БД</h3>
             </div>
-            <input type="text" name="db_name" value="" placeholder="test_database">
+            <?= $form->field($settingsModel, 'db_name', ['inputOptions' => ['id'=> 'db_name_input', 'class'=> 'option_input']])->label(false)->textInput(['placeholder' => 'test_database'])?>
+
         </div>
     </div>
 
@@ -59,14 +63,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 
-    <div class="icons_container">
-        <img src="/img/connection_status_green.png" alt="" id="connection_status_green_icon" style="display:none;">
-        <img src="/img/connection_status_red.png" alt="" id="connection_status_red_icon" style="display: none;">
-    </div>
+    <?php
+    if (Yii::$app->session->hasFlash('settings-model-success')) {
+        echo "<div class=\"icons_container\">";
+        echo "<img src=\"/img/connection_status_green.png\" alt=\"\" id=\"connection_status_green_icon\">";
+        echo "</div>";
 
-    <button id="save_settings_button">
-        <img src="/img/save_button_icon.png" alt="">
-        <h4>Сохранить</h4>
-    </button>
+        echo "<button id=\"save_settings_button\" type=\"submit\">";
+        echo "<img src=\"/img/save_button_icon.png\" alt=\"\">";
+        echo "<h4>Сохранить</h4>";
+        echo "</button>";
+    } else if (Yii::$app->session->hasFlash('settings-model-error')) {
+        echo "<div class=\"icons_container\">";
+        echo "<img src=\"/img/connection_status_red.png\" alt=\"\" id=\"connection_status_red_icon\">";
+        echo "</div>";
+    }
+    ?>
+    <?php ActiveForm::end() ?>
 
 </div>
