@@ -24,8 +24,8 @@ class AppAsset extends AssetBundle
         'css/main-second-layout.css',
     ];
     public $js = [
-//        jQuery CDN - Slim version (=without AJAX)
-        "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+//        jQuery
+        '/web/scripts/jQuery.js',
 //        Popper.JS
         "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js",
 //        Bootstrap JS
@@ -35,7 +35,6 @@ class AppAsset extends AssetBundle
 //        custom scripts
         '/web/scripts/sidebar-functionality.js',
         '/web/scripts/main-sidebar-functionality.js',
-        '/web/scripts/flexible-table-functionality.js',
         '/web/scripts/main-button-processor.js',
     ];
     public $depends = [

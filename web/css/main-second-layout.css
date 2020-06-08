@@ -239,6 +239,9 @@ a:hover img.first-image, .exiticon-switcher:hover img.first-image {
     border: 4px solid #c2c2c2;
     width: 205px;
     height: 60px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
 }
 .report_skeleton_table tr td input {
     width: 100%;
@@ -297,4 +300,8 @@ a:hover img.first-image, .exiticon-switcher:hover img.first-image {
 .chosen {
     background: #484848;
     color: #ff2f2f;
+}
+
+.empty-field {
+    border: 1px solid red;
 }
