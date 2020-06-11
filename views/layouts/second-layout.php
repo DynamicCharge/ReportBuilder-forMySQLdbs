@@ -42,7 +42,7 @@ $reportList = Reports::find()->asArray()->all();
                 if ($reportList){
                     foreach ($reportList as $item) {
                         echo  "<li>";
-                        echo "<a href= \"#\" class='item'>".$item['name']."</a>";
+                        echo "<a href= \"http://reportbuilder-formysqldbs/web/index.php?r=main/show-report&name=".$item['name']."\" class='item'>".$item['name']."</a>";
                         echo "</li>";
                 }
                 } else {
@@ -77,8 +77,10 @@ $reportList = Reports::find()->asArray()->all();
     echo "</div>";
 echo "</div>";
 
+    $this->registerJsFile('@web/scripts/main-sidebar-functionality.js', ['depends' => 'yii\web\YiiAsset']);
     $this->endBody(); ?>
 </body>
 </html>
 
 <?php $this->endPage() ?>
+

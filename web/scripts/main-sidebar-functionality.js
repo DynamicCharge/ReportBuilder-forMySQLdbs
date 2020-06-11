@@ -1,5 +1,13 @@
+function $_GET(key) {
+    var s = window.location.search;
+    s = s.match(new RegExp(key + '=([^&=]+)'));
+    return s ? s[1] : false;
+}
+
 $(document).ready(function () {
-    $('a[href="' + window.location.href + '"]').parent().addClass('chosen');
+    var fullPath = window.location.href;
+    var fullPathArr = fullPath.split('/');
+    var fullPathCropped = fullPathArr.join('/');
 
     $('.main-expand').on('click', function () {
         // open or close navbar
@@ -12,4 +20,15 @@ $(document).ready(function () {
             $('#expand-arrow-img').addClass('to-left');
         }
     });
+
+    $('a').on('click', function () {
+        let value = $(this).text();
+        $.ajax({
+            type: 'POST',
+            url: '../../views/main/show-report.php',
+            data: {
+                    'reportName': $_GET['name'],
+            }
+        });
+    })
 });

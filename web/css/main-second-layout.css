@@ -297,11 +297,47 @@ a:hover img.first-image, .exiticon-switcher:hover img.first-image {
     padding: 10px 0;
 }
 
-.chosen {
-    background: #484848;
-    color: #ff2f2f;
-}
 
 .empty-field {
     border: 1px solid red;
+}
+/**/
+
+/*view - show-report*/
+.show-report-view {
+    /*border: 1px solid red;*/
+    width: 90%;
+    margin: 0 auto;
+}
+.report-title {
+    text-align: center;
+    color: #c2c2c2;
+    font-size: 3em;
+    margin-bottom: 8vh;
+}
+
+.flex_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.flex_buttons button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #333333;
+    color: #c2c2c2;
+    font-size: 1.3em;
+}
+.flex_buttons button:hover {
+    background: #484848;
+    transition: 0.3s;
+}
+.flex_buttons .buttons button:nth-last-child(odd) {
+    margin-left: 10px;
+}
+.flex_buttons .buttons button img {
+    width: 30%;
+    margin-right: 5px;
 }

@@ -33,8 +33,6 @@ class AppAsset extends AssetBundle
 //        jQuery Custom Scroller CDN
         "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js",
 //        custom scripts
-        '/web/scripts/sidebar-functionality.js',
-        '/web/scripts/main-sidebar-functionality.js',
         '/web/scripts/main-button-processor.js',
     ];
     public $depends = [

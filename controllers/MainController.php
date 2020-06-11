@@ -21,6 +21,9 @@ public function beforeAction($action)
     if (in_array($action->id, ['create-report'])) {
         $this->enableCsrfValidation = false;
     }
+    if (in_array($action->id, ['show-report'])) {
+        $this->enableCsrfValidation = false;
+    }
     return parent::beforeAction($action);
 }
 
@@ -42,5 +45,14 @@ public function beforeAction($action)
             return $this->refresh();
         }
         return $this->render('create-report', compact('post'));
+    }
+
+    public function actionShowReport(){
+
+        if(Yii::$app->request->isAjax){
+            $temp = Yii::$app->request->post();
+            echo "<h1>".$temp['reportName']."</h1>";
+        }
+        return $this->render('show-report');
     }
 }

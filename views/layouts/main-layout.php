@@ -84,7 +84,13 @@ AppAsset::register($this);
     </div>
 </div>";
 
- $this->endBody(); ?>
+$this->registerJsFile('@web/scripts/sidebar-functionality.js', ['depends' => 'yii\web\YiiAsset']);
+
+$this->endBody(); ?>
 </body>
 </html>
 <?php $this->endPage() ?>
+
+<?php
+$this->registerJsFile('@web/scripts/sidebar-functionality.js', ['depends' => 'yii\web\YiiAsset']);
+?>
