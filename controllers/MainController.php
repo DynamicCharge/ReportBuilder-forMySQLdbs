@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 use app\models\Reports;
+use app\models\Settings;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -30,6 +31,7 @@ public function beforeAction($action)
     public function actionCreateReport(){
         if (Yii::$app->request->isAjax) {
             $post = Yii::$app->request->post();
+            $settingsModel = Settings::find()->one();
             $reportDataArray = $post['newReportDataArray'];
             $resultArray = [];
             for ($i=0; $i<count($reportDataArray); $i++){
@@ -41,8 +43,8 @@ public function beforeAction($action)
             $model->table_names = $resultArray[1];
             $model->table_header_name = $resultArray[2];
             $model->search_items = $resultArray[3];
+            $model->db_name = $settingsModel->db_name;
             $model->save();
-            return $this->refresh();
         }
         return $this->render('create-report', compact('post'));
     }
@@ -51,7 +53,12 @@ public function beforeAction($action)
 
         if(Yii::$app->request->isAjax){
             $temp = Yii::$app->request->post();
-            echo "<h1>".$temp['reportName']."</h1>";
+            switch ($temp['requestType']){
+                case ('delete'):
+                    $report = Reports::find()->where(['name' => $temp['reportName']])->one();
+                    $report->delete();
+                    break;
+            }
         }
         return $this->render('show-report');
     }

@@ -21,14 +21,17 @@ $(document).ready(function () {
         }
     });
 
-    $('a').on('click', function () {
-        let value = $(this).text();
+    $('#delete_report_btn').on('click', function () {
+        let reportName = $('.report-title').text();
         $.ajax({
             type: 'POST',
-            url: '../../views/main/show-report.php',
+            url: "http://reportbuilder-formysqldbs/web/index.php?r=main/show-report",
             data: {
-                    'reportName': $_GET['name'],
+                    'requestType': 'delete',
+                    'reportName': reportName,
             }
+        }).done(function () {
+            document.location.replace("http://reportbuilder-formysqldbs/web/index.php?r=main/create-report");
         });
-    })
+    });
 });

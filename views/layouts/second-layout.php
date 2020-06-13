@@ -11,12 +11,14 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
 use app\models\Reports;
+use \app\models\Settings;
 
 AppAsset::register($this);
 ?>
 
 <?php
-$reportList = Reports::find()->asArray()->all();
+$settingsModel = Settings::find()->asArray()->all();
+$reportList = Reports::find()->asArray()->where(['db_name'=>$settingsModel[0]['db_name']])->all();
 ?>
 
 <?php $this->beginPage() ?>

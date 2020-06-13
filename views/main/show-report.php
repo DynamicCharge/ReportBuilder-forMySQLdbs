@@ -2,9 +2,11 @@
 
 /* @var $this yii\web\View */
 use \yii\widgets\ActiveForm;
+use \app\models\Settings;
 
-$this->title = 'Новый отчет';
+$settingsModel = Settings::find()->asArray()->all();
 $reportName = Yii::$app->request->get('name');
+$this->title = $reportName;
 ?>
 
 <div class="show-report-view">
@@ -21,7 +23,55 @@ $reportName = Yii::$app->request->get('name');
     <div class="data_table">
         <?php
             $report = \app\models\Reports::find()->asArray()->where(['name'=>$reportName])->all();
-            print_r($report);
+            $customHeadersArray = explode('|', $report[0]['custom_headers']);
+            $dbTableNamesArray = explode('|', $report[0]['table_names']);
+            $dbHeadersArray = explode('|', $report[0]['table_header_name']);
+            $dbSearchItemsArray = explode('|', $report[0]['search_items']);
+
+            $dbc = mysqli_connect($settingsModel[0]['host'], $settingsModel[0]['username'], $settingsModel[0]['password'], $settingsModel[0]['db_name']);
+            $dbh = new PDO("mysql:dbname=".$settingsModel[0]['db_name'].";host=".$settingsModel[0]['host']."", $settingsModel[0]['username'], $settingsModel[0]['password']);
+
+            $resultArray = [];
+        for ($i=0; $i<count($dbTableNamesArray); $i++){
+                $resultRow = [];
+                $sth = $dbh->prepare("SELECT ".$dbHeadersArray[$i]." FROM ".$dbTableNamesArray[$i]."");
+                $sth->execute();
+                while ($array = $sth->fetch()){
+                    array_push($resultRow, $array);
+                }
+                array_push($resultArray, $resultRow);
+            }
         ?>
+
+        <div class="data_grid">
+
+            <?php
+            for ($i=0; $i<count($customHeadersArray); $i++){
+                echo "<div class=\"items_container\">";
+
+                echo "<div class=\"data_item\">";
+                echo "<h4>".$customHeadersArray[$i]."</h4>";
+                echo "</div>";
+
+                for ($j=0; $j<count($resultArray); $j++) {
+
+                        for ($l=0; $l<count($resultArray[$i])/2; $l++)
+                        {
+                            if($resultArray[$i][$j][0]){
+                                echo "<div class=\"data_item\">";
+
+                                echo "<h4>".$resultArray[$i][$j][0]."</h4>";
+
+                                echo "</div>";
+                            }
+                        }
+                }
+
+                echo "</div>";
+            }
+            ?>
+
+        </div>
+
     </div>
 </div>

@@ -31,29 +31,35 @@ $(document).ready(function () {
 
         let reportName = $('#new_report_name_input').val();
         let resultArray = [];
-
+        let dataArray = [];
 
         $('table tr').each(function () {
             let array_row = [];
-            $(this).find('input').each(function(){
-                if (!$(this).val() || !reportName){
-                    $(this).addClass('empty-field');
-                    alert('Все поля обязательны для заполнения!');
-                    throw new Error('Ban!');
-                } else {
-                    array_row.push($(this).val());
-                }
+            $(this).find('td').each(function(){
+                $(this).find('input').each(function () {
+                    if (!$(this).val() || !reportName){
+                        $(this).addClass('empty-field');
+                        alert('Все поля обязательны для заполнения!');
+                        throw new Error('Ban!');
+                    } else {
+                            array_row.push($(this).val());
+                    }
+                })
             });
-            resultArray.push(array_row);
+            if (array_row != ''){
+                resultArray.push(array_row);
+            }
         });
 
-            $.ajax({
+        $.ajax({
                 type: 'POST',
                 url: fullPathCropped,
                 data: {
                     'reportName': reportName,
                     'newReportDataArray': resultArray,
                 }
+            }).done(function () {
+                location.reload();
             });
     });
 });
