@@ -374,7 +374,7 @@ a:hover img.first-image, .exiticon-switcher:hover img.first-image {
     /*border: 1px solid red;*/
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: normal;
     align-items: baseline;
     flex-direction: row;
     text-align: center;

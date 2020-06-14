@@ -1,8 +1,8 @@
 <?php
 
 /* @var $this yii\web\View */
-use \yii\widgets\ActiveForm;
 use \app\models\Settings;
+use \app\models\Reports;
 
 $settingsModel = Settings::find()->asArray()->all();
 $reportName = Yii::$app->request->get('name');
@@ -22,13 +22,12 @@ $this->title = $reportName;
 
     <div class="data_table">
         <?php
-            $report = \app\models\Reports::find()->asArray()->where(['name'=>$reportName])->all();
+            $report = Reports::find()->asArray()->where(['name'=>$reportName])->all();
             $customHeadersArray = explode('|', $report[0]['custom_headers']);
             $dbTableNamesArray = explode('|', $report[0]['table_names']);
             $dbHeadersArray = explode('|', $report[0]['table_header_name']);
             $dbSearchItemsArray = explode('|', $report[0]['search_items']);
 
-            $dbc = mysqli_connect($settingsModel[0]['host'], $settingsModel[0]['username'], $settingsModel[0]['password'], $settingsModel[0]['db_name']);
             $dbh = new PDO("mysql:dbname=".$settingsModel[0]['db_name'].";host=".$settingsModel[0]['host']."", $settingsModel[0]['username'], $settingsModel[0]['password']);
 
             $resultArray = [];
@@ -41,6 +40,7 @@ $this->title = $reportName;
                 }
                 array_push($resultArray, $resultRow);
             }
+
         ?>
 
         <div class="data_grid">
@@ -53,18 +53,10 @@ $this->title = $reportName;
                 echo "<h4>".$customHeadersArray[$i]."</h4>";
                 echo "</div>";
 
-                for ($j=0; $j<count($resultArray); $j++) {
-
-                        for ($l=0; $l<count($resultArray[$i])/2; $l++)
-                        {
-                            if($resultArray[$i][$j][0]){
-                                echo "<div class=\"data_item\">";
-
-                                echo "<h4>".$resultArray[$i][$j][0]."</h4>";
-
-                                echo "</div>";
-                            }
-                        }
+                for ($j=0; $j<count($resultArray[$i]); $j++) {
+                    echo "<div class=\"data_item\">";
+                    echo "<h4>".$resultArray[$i][$j][0]."</h4>";
+                    echo "</div>";
                 }
 
                 echo "</div>";
