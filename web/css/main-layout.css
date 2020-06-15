@@ -196,7 +196,6 @@ a, a:hover, a:focus {
     align-items: center;
     flex-direction: row;
     height: 65vh;
-    /*border: 1px solid red;*/
 }
 .radial_container div {
 

@@ -44,7 +44,7 @@ $reportList = Reports::find()->asArray()->where(['db_name'=>$settingsModel[0]['d
                 if ($reportList){
                     foreach ($reportList as $item) {
                         echo  "<li>";
-                        echo "<a href= \"http://reportbuilder-formysqldbs/web/index.php?r=main/show-report&name=".$item['name']."\" class='item'>".$item['name']."</a>";
+                        echo "<a href= \"http://reportbuilder-formysqldbs/web/index.php?r=main/show-report&name=".$item['name']."&rows=10\" class='item'>".$item['name']."</a>";
                         echo "</li>";
                 }
                 } else {

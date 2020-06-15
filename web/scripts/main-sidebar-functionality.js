@@ -34,4 +34,10 @@ $(document).ready(function () {
             document.location.replace("http://reportbuilder-formysqldbs/web/index.php?r=main/create-report");
         });
     });
+
+    $('#search_data_btn').on('click', function () {
+        let reportRowCounter ='&rows=' + $('.row-counter').val();
+        document.location.replace(fullPathCropped + reportRowCounter);
+    });
+
 });

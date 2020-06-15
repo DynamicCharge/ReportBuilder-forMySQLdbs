@@ -15,6 +15,7 @@ $this->title = $reportName;
     <div class="flex_buttons">
         <button id="delete_report_btn"><img src="/img/report_delete_icon.png" width="25" alt=""></button>
         <div class="buttons">
+            <?php echo "<input type=\"number\" class=\"row-counter\" value=".$_GET["rows"].">" ?>
             <button id="search_data_btn"><img src="/img/report_search_icon.png" alt="">Поиск</button>
             <button id="export_report_btn"><img src="/img/report_export_icon.png" alt="">Экспорт</button>
         </div>
@@ -32,11 +33,16 @@ $this->title = $reportName;
 
             $resultArray = [];
         for ($i=0; $i<count($dbTableNamesArray); $i++){
+                $fetchCounter = 0;
                 $resultRow = [];
                 $sth = $dbh->prepare("SELECT ".$dbHeadersArray[$i]." FROM ".$dbTableNamesArray[$i]."");
                 $sth->execute();
                 while ($array = $sth->fetch()){
                     array_push($resultRow, $array);
+                    $fetchCounter++;
+                    if ($_GET && $fetchCounter == $_GET['rows']){
+                        break;
+                    }
                 }
                 array_push($resultArray, $resultRow);
             }
@@ -46,20 +52,45 @@ $this->title = $reportName;
         <div class="data_grid">
 
             <?php
-            for ($i=0; $i<count($customHeadersArray); $i++){
-                echo "<div class=\"items_container\">";
+            for ($i=-1; $i<count($customHeadersArray); $i++){
+                if ($i==-1){
+                    $maxValue = 0;
+                    $counter = 1;
 
-                echo "<div class=\"data_item\">";
-                echo "<h4>".$customHeadersArray[$i]."</h4>";
-                echo "</div>";
+                    echo "<div class=\"items_container row-number\">";
+                    echo "<div class=\"data_item row-number\">";
+                    echo "<h4>№</h4>";
+                    echo "</div>";
 
-                for ($j=0; $j<count($resultArray[$i]); $j++) {
+                    for ($j=0; $j<count($resultArray); $j++) {
+                        if (count($resultArray[$j])>$maxValue){
+                            $maxValue = count($resultArray[$j]);
+                        }
+                    }
+
+                    for ($z=0; $z<$maxValue; $z++){
+                        echo "<div class=\"data_item\">";
+                        echo "<h4>$counter</h4>";
+                        echo "</div>";
+                        $counter++;
+                    }
+                    echo "</div>";
+
+                } else {
+                    echo "<div class=\"items_container\">";
+
                     echo "<div class=\"data_item\">";
-                    echo "<h4>".$resultArray[$i][$j][0]."</h4>";
+                    echo "<h4>".$customHeadersArray[$i]."</h4>";
+                    echo "</div>";
+
+                    for ($j=0; $j<count($resultArray[$i]); $j++) {
+                        echo "<div class=\"data_item\">";
+                        echo "<h4>".$resultArray[$i][$j][0]."</h4>";
+                        echo "</div>";
+                    }
                     echo "</div>";
                 }
 
-                echo "</div>";
             }
             ?>
 
@@ -67,3 +98,29 @@ $this->title = $reportName;
 
     </div>
 </div>
+
+<script>
+    let exportBtn = document.getElementById('export_report_btn');
+
+    exportBtn.onclick = function () {
+        let reportName = <?php echo json_encode($reportName)?>;
+        let headersArray = <?php echo json_encode($customHeadersArray);?>;
+        let queryData = <?php echo json_encode($resultArray);?>;
+
+        $.ajax({
+            type: 'POST',
+            url: "http://reportbuilder-formysqldbs/web/index.php?r=main/export-excel",
+            data: {
+            'requestType': 'export',
+            'reportName': reportName,
+            'queryData' : queryData,
+            'headersArray' : headersArray
+            },
+            error: function () {
+                alert('Ошибка! Отчет не был сформирован!');
+            }
+        }).done(function () {
+            alert('Отчет успешно сформирован!');
+        });
+    };
+</script>
