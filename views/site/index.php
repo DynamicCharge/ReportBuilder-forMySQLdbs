@@ -43,10 +43,9 @@ $this->title = 'Главная';
             </div>
             <div id="right_radial">
                 <div id="radial_icons">
-                    <img src="../../img/left-radial-status-green.png" alt="" style="display:none;">
-                    <img src="../../img/left-radial-status-red.png" alt="" >
+                    <img src="../../img/right-radial-status.png" alt="" >
                 </div>
-                <h3 id="left_radial_status">Идея не<br>определена</h3>
+                <h3 id="left_radial_status">Alpha v.5</h3>
             </div>
         </div>
     </div>

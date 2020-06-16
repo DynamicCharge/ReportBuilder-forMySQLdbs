@@ -22,7 +22,7 @@ $this->title = 'Новый отчет';
             <td><input type="text" placeholder=":db_table_header_name:" id="db_table_head_name_0"></td>
         </tr>
         <tr class="table_search_item">
-            <td><input type="text" placeholder=":db_row_id:" id="db_table_head_name_0"></td>
+            <td><input type="text" placeholder=":db_item: = :value:" id="db_table_search_item_0" class="search_item"></td>
         </tr>
     </table>
 

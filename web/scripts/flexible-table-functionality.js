@@ -18,7 +18,7 @@ $(document).ready(function () {
             $(this).find('td').last().after('<td><input type="text" placeholder=":db_table_header_name:"</td>');
         });
         table.find('.table_search_item').each(function(){
-            $(this).find('td').last().after('<td><input type="text" placeholder=":db_row_id:"></td>');
+            $(this).find('td').last().after('<td><input type="text" placeholder=":db_item: = :value:" class="search_item"></td>');
         });
     });
     
@@ -37,11 +37,14 @@ $(document).ready(function () {
             let array_row = [];
             $(this).find('td').each(function(){
                 $(this).find('input').each(function () {
-                    if (!$(this).val() || !reportName){
+                    if ((!$(this).val() || !reportName) && !$(this).hasClass('search_item')){
                         $(this).addClass('empty-field');
                         alert('Все поля обязательны для заполнения!');
                         throw new Error('Ban!');
                     } else {
+                        if ($(this).hasClass('search_item') && $(this).val() == ''){
+                            $(this).val('-');
+                        }
                             array_row.push($(this).val());
                     }
                 })

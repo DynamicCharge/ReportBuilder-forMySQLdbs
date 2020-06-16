@@ -16,8 +16,8 @@ $this->title = $reportName;
         <button id="delete_report_btn"><img src="/img/report_delete_icon.png" width="25" alt=""></button>
         <div class="buttons">
             <?php echo "<input type=\"number\" class=\"row-counter\" value=".$_GET["rows"].">" ?>
-            <button id="search_data_btn"><img src="/img/report_search_icon.png" alt="">Поиск</button>
-            <button id="export_report_btn"><img src="/img/report_export_icon.png" alt="">Экспорт</button>
+            <button id="search_data_btn"><img src="/img/report_search_icon.png" width="25" alt="">Показать</button>
+            <button id="export_report_btn"><img src="/img/report_export_icon.png" width="30" alt="">Экспорт</button>
         </div>
     </div>
 
@@ -35,8 +35,14 @@ $this->title = $reportName;
         for ($i=0; $i<count($dbTableNamesArray); $i++){
                 $fetchCounter = 0;
                 $resultRow = [];
-                $sth = $dbh->prepare("SELECT ".$dbHeadersArray[$i]." FROM ".$dbTableNamesArray[$i]."");
-                $sth->execute();
+                if ($dbSearchItemsArray[$i] == '-'){
+                    $sth = $dbh->prepare("SELECT ".$dbHeadersArray[$i]." FROM ".$dbTableNamesArray[$i]."");
+                    $sth->execute();
+                } else {
+                    $explodedItems = explode('=', $dbSearchItemsArray[$i]);
+                    $sth = $dbh->prepare("SELECT ".$dbHeadersArray[$i]." FROM ".$dbTableNamesArray[$i]." WHERE ". $explodedItems[0]." = ?");
+                    $sth->execute(array($explodedItems[1]));
+                }
                 while ($array = $sth->fetch()){
                     array_push($resultRow, $array);
                     $fetchCounter++;
@@ -46,6 +52,7 @@ $this->title = $reportName;
                 }
                 array_push($resultArray, $resultRow);
             }
+
 
         ?>
 
